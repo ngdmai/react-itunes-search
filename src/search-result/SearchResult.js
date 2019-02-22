@@ -33,7 +33,7 @@ export default class SearchResult extends Component {
       return (
         <div>
           {items.map(item => (
-            <SearchItem item={item} />
+            <SearchItem key={item.trackId} item={item} />
           ))}
         </div>
       );
