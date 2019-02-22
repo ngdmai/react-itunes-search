@@ -1,19 +1,20 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
 
-import { Button, Welcome } from '@storybook/react/demo';
+import SearchBar from '../search-bar/SearchBar';
+import SearchItem from '../search-item/SearchItem';
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+storiesOf('SearchBar', module).add('empty search bar', () => <SearchBar />);
 
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => (
-    <Button onClick={action('clicked')}>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </Button>
-  ));
+export const item = {
+  key: 1,
+  kind: 'feature-movie',
+  trackName: 'The Mummy',
+  artworkUrl100:
+    'https://is4-ssl.mzstatic.com/image/thumb/Video128/v4/62/ba/8b/62ba8bac-1dc1-1d3e-4732-5ecab68dab3d/source/100x100bb.png'
+};
+
+storiesOf('Search Item', module).add('example search item', () => (
+  <SearchItem item={item} />
+));

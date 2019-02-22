@@ -20,12 +20,12 @@ export default class SearchItem extends Component {
 
   render() {
     const { item } = this.props;
-    const { key, kind, trackName } = item;
+    const { key, kind, trackName, artworkUrl100 } = item;
     return (
       <Wrapper key={key}>
         <ItemKind>{this.getSearchItemKind(kind)}</ItemKind>
         <ItemTitle>{trackName}</ItemTitle>
-        <img src={item.artworkUrl100} alt={trackName} />
+        <img src={artworkUrl100} alt={trackName} />
       </Wrapper>
     );
   }
