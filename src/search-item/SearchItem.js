@@ -10,16 +10,15 @@ const Wrapper = styled.div`
 
 const WrapperItemLeft = styled.div`
   float: left;
-  width: 180px;
+  max-width: 100px;
 `;
 
 const WrapperItemRight = styled.div`
-  margin-left: 180px;
+  margin-left: 120px;
 `;
 
 const ItemArtworkImage = styled.img`
   border-radius: 0.3em;
-  height: 250px;
 `;
 
 const ItemTitle = styled.h2``;
