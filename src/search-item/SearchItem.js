@@ -3,49 +3,52 @@ import styled from 'styled-components';
 import '../index.css';
 
 const Wrapper = styled.div`
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(25, 25, 25, 0.2);
+  width: 90vw;
   max-width: 600px;
   margin: auto;
-  margin-bottom: 64px;
+  margin-bottom: 20px;
 `;
 
 const WrapperItemLeft = styled.div`
   float: left;
+  width: 100%;
   max-width: 100px;
+  padding: 20px;
 `;
 
 const WrapperItemRight = styled.div`
   margin-left: 120px;
+  padding: 20px;
 `;
 
 const ItemArtworkImage = styled.img`
-  border-radius: 0.3em;
+  border-radius: 0.1em;
 `;
 
-const ItemTitle = styled.h2``;
+const ItemTitleLink = styled.a`
+  color: black;
+  text-decoration: none;
+
+  :hover {
+    text-decoration: underline;
+  }
+`;
+
+const ItemTitle = styled.h2`
+  margin-top: 0;
+`;
 
 const ItemOverview = styled.div`
-  font-color: grey;
+  color: #3e3e3e;
+  font-size: 0.9em;
   margin-bottom: 16px;
 `;
 
 const ItemDescription = styled.div`
-  font-size: 0.8em;
-  margin-bottom: 32px;
-`;
-
-const ItemViewFooter = styled.div`
-  text-align: right;
-`;
-
-const ItemViewUrl = styled.a`
-  display: inline-block;
-  border-radius: 3px;
-  padding: 0.5rem 0;
-  margin: 0.5rem 1rem;
-  width: 7rem;
-  text-align: center;
-  color: black;
-  border: 2px solid black;
+  color: #5a5a5a;
   font-size: 0.8em;
 `;
 
@@ -73,14 +76,15 @@ export default class SearchItem extends Component {
           <ItemArtwork artworkUrl100={artworkUrl100} alt={trackName} />
         </WrapperItemLeft>
         <WrapperItemRight>
-          <ItemTitle>{trackName}</ItemTitle>
+          <ItemTitleLink
+            href={trackViewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <ItemTitle>{trackName}</ItemTitle>
+          </ItemTitleLink>
           <ItemOverview>{primaryGenreName}</ItemOverview>
           <ItemDescription>{longDescription}</ItemDescription>
-          <ItemViewFooter>
-            <ItemViewUrl href={trackViewUrl} target="_blank">
-              Link to iTunes
-            </ItemViewUrl>
-          </ItemViewFooter>
         </WrapperItemRight>
       </Wrapper>
     );
