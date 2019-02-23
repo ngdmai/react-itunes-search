@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   max-width: 600px;
   margin: auto;
   margin-bottom: 20px;
+  overflow: hidden;
 `;
 
 const WrapperItemLeft = styled.div`
@@ -68,7 +69,11 @@ export default class SearchItem extends Component {
       artworkUrl100,
       primaryGenreName,
       trackViewUrl,
-      longDescription
+      longDescription,
+      trackPrice,
+      trackRentalPrice,
+      currency,
+      contentAdvisoryRating
     } = item;
     return (
       <Wrapper>
@@ -83,7 +88,10 @@ export default class SearchItem extends Component {
           >
             <ItemTitle>{trackName}</ItemTitle>
           </ItemTitleLink>
-          <ItemOverview>{primaryGenreName}</ItemOverview>
+          <ItemOverview>
+            {primaryGenreName} - {contentAdvisoryRating} - {trackPrice}{' '}
+            {currency} - {trackRentalPrice} {currency}
+          </ItemOverview>
           <ItemDescription>{longDescription}</ItemDescription>
         </WrapperItemRight>
       </Wrapper>
