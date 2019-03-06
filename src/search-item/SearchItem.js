@@ -42,7 +42,7 @@ const ItemTitle = styled.h2`
   margin-top: 0;
 `;
 
-const ItemOverview = styled.div`
+const Overview = styled.div`
   color: #3e3e3e;
   font-size: 0.9em;
   margin-bottom: 16px;
@@ -57,42 +57,42 @@ function ItemArtwork({ artworkUrl100, trackName }) {
   return <ItemArtworkImage src={artworkUrl100} alt={trackName} />;
 }
 
-export default class SearchItem extends Component {
-  getSearchItemKind(kind) {
-    if (kind === 'feature-movie') return 'Movie';
-  }
+function ItemOverview({ item }) {
+  return (
+    <Overview>
+      <span>{item.primaryGenreName} - </span>
+      <span>{item.contentAdvisoryRating} - </span>
+      <span>
+        {item.trackPrice} {item.currency} -{' '}
+      </span>
+      <span>
+        {item.trackRentalPrice} {item.currency}
+      </span>
+    </Overview>
+  );
+}
 
+export default class SearchItem extends Component {
   render() {
     const { item } = this.props;
-    const {
-      trackName,
-      artworkUrl100,
-      primaryGenreName,
-      trackViewUrl,
-      longDescription,
-      trackPrice,
-      trackRentalPrice,
-      currency,
-      contentAdvisoryRating
-    } = item;
     return (
       <Wrapper>
         <WrapperItemLeft>
-          <ItemArtwork artworkUrl100={artworkUrl100} alt={trackName} />
+          <ItemArtwork
+            artworkUrl100={item.artworkUrl100}
+            alt={item.trackName}
+          />
         </WrapperItemLeft>
         <WrapperItemRight>
           <ItemTitleLink
-            href={trackViewUrl}
+            href={item.trackViewUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <ItemTitle>{trackName}</ItemTitle>
+            <ItemTitle>{item.trackName}</ItemTitle>
           </ItemTitleLink>
-          <ItemOverview>
-            {primaryGenreName} - {contentAdvisoryRating} - {trackPrice}{' '}
-            {currency} - {trackRentalPrice} {currency}
-          </ItemOverview>
-          <ItemDescription>{longDescription}</ItemDescription>
+          <ItemOverview item={item} />
+          <ItemDescription>{item.longDescription}</ItemDescription>
         </WrapperItemRight>
       </Wrapper>
     );

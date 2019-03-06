@@ -19,7 +19,17 @@ export default class SearchResult extends Component {
           isLoaded: true,
           items: result.results
         });
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({
+          error: err
+        });
       });
+  }
+
+  filterSearchResults(result) {
+    return result.kind === 'feature-movie';
   }
 
   render() {
@@ -32,9 +42,11 @@ export default class SearchResult extends Component {
     } else {
       return (
         <div>
-          {items.map(item => (
-            <SearchItem key={item.trackId} item={item} />
-          ))}
+          {items
+            .filter(item => this.filterSearchResults(item))
+            .map(item => (
+              <SearchItem key={item.trackId} item={item} />
+            ))}
         </div>
       );
     }
