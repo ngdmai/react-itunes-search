@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const SearchBarWrapper = styled.div`
   margin-bottom: 16px;
   text-align: center;
   padding: 24px;
@@ -10,7 +10,6 @@ const Wrapper = styled.div`
 const Input = styled.input`
   padding: 0.5em;
   margin: 0.5em;
-  color: ${props => props.inputColor || "#596273"};
   border: none;
   border-radius: 3px;
 `;
@@ -27,16 +26,17 @@ const Button = styled.button`
 export default class SearchBar extends Component {
   render() {
     return (
-      <Wrapper>
+      <SearchBarWrapper>
         <Input
-          placeholder="search on itunes"
           type="text"
+          placeholder="search on itunes"
           onChange={e => {
             this.props.onChange(e.target.value);
           }}
+          onKeyPress={e => this.props.onKeyPress(e)}
         />
         <Button onClick={() => this.props.onPress()}>Search</Button>
-      </Wrapper>
+      </SearchBarWrapper>
     );
   }
 }

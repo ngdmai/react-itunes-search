@@ -6,9 +6,6 @@ const Wrapper = styled.div`
   background: white;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(25, 25, 25, 0.2);
-  width: 90vw;
-  max-width: 600px;
-  margin: auto;
   margin-bottom: 20px;
   overflow: hidden;
 `;

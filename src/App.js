@@ -1,25 +1,20 @@
-import React, { Component } from "react";
-import "./App.css";
-import SearchBar from "./search-bar/SearchBar";
-import SearchResult from "./search-result/SearchResult";
+import React, { Component } from 'react';
+import './App.css';
+import SearchBar from './components/SearchBar';
+import SearchResult from './components/SearchResult';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      searchQuery: "",
+      searchQuery: '',
+      currentSearch: '',
       searchItems: [],
       isLoaded: false,
       error: null
     };
   }
-
-  enterSearchQuery = query => {
-    this.setState({
-      searchQuery: query
-    });
-  };
 
   loadDataFromApi(query) {
     fetch(`https://itunes.apple.com/search?term=${query}&entity=movie&limit=10`)
@@ -38,6 +33,18 @@ class App extends Component {
       });
   }
 
+  enterSearchQuery = query => {
+    this.setState({
+      searchQuery: query
+    });
+  };
+
+  showSearchResultsOnKeyPress = e => {
+    if (e.key === 'Enter') {
+      this.showSearchResults();
+    }
+  };
+
   showSearchResults = () => {
     this.loadDataFromApi(this.state.searchQuery);
     this.setState({
@@ -48,12 +55,11 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <div>
-          <SearchBar
-            onChange={this.enterSearchQuery}
-            onPress={this.showSearchResults}
-          />
-        </div>
+        <SearchBar
+          onChange={this.enterSearchQuery}
+          onPress={this.showSearchResults}
+          onKeyPress={this.showSearchResultsOnKeyPress}
+        />
         <SearchResult
           search={this.state.currentSearch}
           items={this.state.items}
