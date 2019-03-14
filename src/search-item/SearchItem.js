@@ -16,12 +16,12 @@ const Wrapper = styled.div`
 const WrapperItemLeft = styled.div`
   float: left;
   width: 100%;
-  max-width: 100px;
+  max-width: 70px;
   padding: 20px;
 `;
 
 const WrapperItemRight = styled.div`
-  margin-left: 120px;
+  margin-left: 90px;
   padding: 20px;
 `;
 

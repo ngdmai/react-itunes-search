@@ -28,8 +28,14 @@ export default class SearchBar extends Component {
   render() {
     return (
       <Wrapper>
-        <Input placeholder="search on itunes" type="text" />
-        <Button>Seach</Button>
+        <Input
+          placeholder="search on itunes"
+          type="text"
+          onChange={e => {
+            this.props.onChange(e.target.value);
+          }}
+        />
+        <Button onClick={() => this.props.onPress()}>Seach</Button>
       </Wrapper>
     );
   }
