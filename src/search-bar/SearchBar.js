@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin-bottom: 16px;
@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 const Input = styled.input`
   padding: 0.5em;
   margin: 0.5em;
-  color: ${props => props.inputColor || '#596273'};
+  color: ${props => props.inputColor || "#596273"};
   border: none;
   border-radius: 3px;
 `;
@@ -35,7 +35,7 @@ export default class SearchBar extends Component {
             this.props.onChange(e.target.value);
           }}
         />
-        <Button onClick={() => this.props.onPress()}>Seach</Button>
+        <Button onClick={() => this.props.onPress()}>Search</Button>
       </Wrapper>
     );
   }

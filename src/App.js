@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import './App.css';
-import SearchBar from './search-bar/SearchBar';
-import SearchResult from './search-result/SearchResult';
+import React, { Component } from "react";
+import "./App.css";
+import SearchBar from "./search-bar/SearchBar";
+import SearchResult from "./search-result/SearchResult";
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      searchQuery: '',
+      searchQuery: "",
       searchItems: [],
       isLoaded: false,
       error: null
@@ -22,7 +22,7 @@ class App extends Component {
   };
 
   loadDataFromApi(query) {
-    fetch(`https://itunes.apple.com/search?term=${query}&limit=10`)
+    fetch(`https://itunes.apple.com/search?term=${query}&entity=movie&limit=10`)
       .then(res => res.json())
       .then(result => {
         this.setState({
@@ -40,11 +40,14 @@ class App extends Component {
 
   showSearchResults = () => {
     this.loadDataFromApi(this.state.searchQuery);
+    this.setState({
+      currentSearch: this.state.searchQuery
+    });
   };
 
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <div>
           <SearchBar
             onChange={this.enterSearchQuery}
@@ -52,7 +55,7 @@ class App extends Component {
           />
         </div>
         <SearchResult
-          search={this.state.searchQuery}
+          search={this.state.currentSearch}
           items={this.state.items}
           error={this.state.error}
           isLoaded={this.state.isLoaded}
