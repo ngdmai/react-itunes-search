@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import '../index.css';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   background: white;
@@ -90,6 +91,7 @@ export default class SearchItem extends Component {
           </ItemTitleLink>
           <ItemOverview item={item} />
           <ItemDescription>{item.longDescription}</ItemDescription>
+          <Link to={`/movie/${item.trackId}`}>Details</Link>
         </WrapperItemRight>
       </Wrapper>
     );

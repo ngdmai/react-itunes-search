@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import SearchResult from './components/SearchResult';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import DetailPage from './detail/DetailPage';
 
-class App extends Component {
+class Search extends Component {
   constructor(props) {
     super(props);
 
@@ -71,4 +73,13 @@ class App extends Component {
   }
 }
 
-export default App;
+export default class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Route path="/" exact component={Search} />
+        <Route path="/movie/:id" component={DetailPage} />
+      </Router>
+    );
+  }
+}
