@@ -24,7 +24,7 @@ class Search extends Component {
       .then(result => {
         this.setState({
           isLoaded: true,
-          items: result.results
+          searchItems: result.results
         });
       })
       .catch(err => {
@@ -64,7 +64,7 @@ class Search extends Component {
         />
         <SearchResult
           search={this.state.currentSearch}
-          items={this.state.items}
+          items={this.state.searchItems}
           error={this.state.error}
           isLoaded={this.state.isLoaded}
         />

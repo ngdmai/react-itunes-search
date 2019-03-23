@@ -1,6 +1,14 @@
 import React from 'react';
 
-function ItemOverview({ item }) {
+interface Props {
+  primaryGenreName: string;
+  contentAdvisoryRating: string;
+  trackPrice: string;
+  currency: string;
+  trackRentalPrice: string;
+}
+
+function ItemOverview({ item }: any) {
   return (
     <div className="search-item-overview">
       <span>{item.primaryGenreName} - </span>

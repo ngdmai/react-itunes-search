@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
-export default class SearchBar extends Component {
+interface Props {
+  onChange(value: string): void;
+  onKeyPress(e: React.KeyboardEvent): void;
+  onPress(): void;
+}
+
+export default class SearchBar extends Component<Props> {
   render() {
     const { onChange, onKeyPress, onPress } = this.props;
     return (

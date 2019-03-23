@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { ItemOverview } from '../helpers/DescriptionHelper';
 
-export default class SearchItem extends Component {
+interface Props {
+  item: any;
+}
+
+export default class SearchItem extends Component<Props> {
   render() {
     const { item } = this.props;
     return (

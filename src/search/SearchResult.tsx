@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import SearchItem from './SearchItem';
 
-export default class SearchResult extends Component {
+interface Props {
+  search: string;
+  error: any;
+  isLoaded: boolean;
+  items: Array<any>;
+}
+
+export default class SearchResult extends Component<Props> {
   render() {
     const { search, error, isLoaded, items } = this.props;
     return (

@@ -2,8 +2,8 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import SearchBar from '../search-bar/SearchBar';
-import SearchItem from '../search-item/SearchItem';
+import SearchBar from '../search/SearchBar';
+import SearchItem from '../search/SearchItem';
 
 import { FEATUREMOVIE } from './mock-data/feature-movie';
 import { SONG } from './mock-data/song';
