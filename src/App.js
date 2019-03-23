@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar';
-import SearchResult from './components/SearchResult';
+import SearchBar from './search/SearchBar';
+import SearchResult from './search/SearchResult';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import DetailPage from './detail/DetailPage';
 
@@ -56,7 +56,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <SearchBar
           onChange={this.enterSearchQuery}
           onPress={this.showSearchResults}
@@ -76,10 +76,13 @@ class Search extends Component {
 export default class App extends Component {
   render() {
     return (
-      <Router>
-        <Route path="/" exact component={Search} />
-        <Route path="/movie/:id" component={DetailPage} />
-      </Router>
+      <div className="container">
+        <Router>
+          <Route path="/" exact component={Search} />
+          <Route path="/search/:term" component={Search} />
+          <Route path="/movie/:id" component={DetailPage} />
+        </Router>
+      </div>
     );
   }
 }
