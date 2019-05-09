@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { ItemOverview } from '../helpers/DescriptionHelper';
 
 interface Props {
   match: any;
