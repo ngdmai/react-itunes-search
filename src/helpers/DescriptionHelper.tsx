@@ -1,24 +1,21 @@
-import React from 'react';
+import React, { Props } from 'react';
+import { getMovieRuntime, getReleaseYear } from './MovieHelper';
+import { Movie } from '../model/Movie';
 
-interface Props {
-  primaryGenreName: string;
-  contentAdvisoryRating: string;
-  trackPrice: string;
-  currency: string;
-  trackRentalPrice: string;
-}
+function ItemOverview(props: any) {
+  const movie: Movie = props.item;
 
-function ItemOverview({ item }: any) {
+  let runtime = getMovieRuntime(movie.trackTimeMillis);
+  runtime = runtime ? ' - ' + runtime : '';
+
+  const releaseYear = getReleaseYear(movie.releaseDate.toString());
+  const releaseYearAsString = releaseYear ? ' - ' + releaseYear : '';
+
   return (
     <div className="search-item-overview">
-      <span>{item.primaryGenreName} - </span>
-      <span>{item.contentAdvisoryRating} - </span>
-      <span>
-        {item.trackPrice} {item.currency} -{' '}
-      </span>
-      <span>
-        {item.trackRentalPrice} {item.currency}
-      </span>
+      <span>{movie.primaryGenreName}</span>
+      <span>{runtime}</span>
+      <span>{releaseYearAsString}</span>
     </div>
   );
 }

@@ -6,11 +6,12 @@ interface Props {
   error: any;
   isLoaded: boolean;
   items: Array<any>;
+  history: any;
 }
 
 export default class SearchResult extends Component<Props> {
   render() {
-    const { search, error, isLoaded, items } = this.props;
+    const { search, error, isLoaded, items, history } = this.props;
     return (
       <div className="search-results">
         <div className="search-info">
@@ -20,7 +21,14 @@ export default class SearchResult extends Component<Props> {
         </div>
         <div className="search-result-items">
           {items &&
-            items.map(item => <SearchItem key={item.trackId} item={item} />)}
+            items.map(item => (
+              <SearchItem
+                key={item.trackId}
+                item={item}
+                searchTerm={search}
+                history={history}
+              />
+            ))}
         </div>
       </div>
     );

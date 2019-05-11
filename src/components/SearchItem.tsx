@@ -1,22 +1,36 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { ItemOverview } from '../helpers/DescriptionHelper';
+import { getArtwork } from '../helpers/MovieHelper';
 
 interface Props {
   item: any;
+  searchTerm: string;
+  history: any;
 }
 
 export default class SearchItem extends Component<Props> {
+  openItem = (item: any) => {
+    const { searchTerm, history } = this.props;
+
+    history.push({
+      pathname: '/movie/' + item.trackId,
+      state: {
+        item: item,
+        searchTerm: searchTerm
+      }
+    });
+  };
+
   render() {
     const { item } = this.props;
+    const { artworkUrl100 } = item;
+
+    const artwork = getArtwork(artworkUrl100);
+
     return (
       <div className="search-item">
         <div className="search-item-left">
-          <img
-            className="artwork"
-            src={item.artworkUrl100}
-            alt={item.trackName}
-          />
+          <img className="artwork" src={artwork} alt={item.trackName} />
         </div>
         <div className="search-item-right">
           <a
@@ -29,7 +43,7 @@ export default class SearchItem extends Component<Props> {
           </a>
           <ItemOverview item={item} />
           <div className="search-item-description">{item.longDescription}</div>
-          <Link to={`/movie/${item.trackId}`}>Details</Link>
+          <button onClick={() => this.openItem(item)}>Details</button>
         </div>
       </div>
     );
